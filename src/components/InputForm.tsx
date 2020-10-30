@@ -3,17 +3,7 @@ import { useTasks } from '../CustomHooks'
 
 
 export const InputForm: React.FC = () => {
-    const [
-        tasks, 
-        activeCount, 
-        completedCount,
-        add, 
-        remove, 
-        toggle, 
-        clearCompleted, 
-        allCompleted, 
-        edit,
-    ] = useTasks();
+    const {tasks, completedCount, addHandler, allCompletedHandler} = useTasks();
     const [title, setTitle] = useState<string>('');
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +12,7 @@ export const InputForm: React.FC = () => {
 
     const keyPressHandler = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter' && title.length > 0) {
-            add(title);
+            addHandler(title);
             setTitle('');
         }
     }
@@ -33,7 +23,7 @@ export const InputForm: React.FC = () => {
                 <div className="input-group-text">
                     <input 
                         type="checkbox" 
-                        onChange={allCompleted} 
+                        onChange={allCompletedHandler} 
                         checked={(tasks.length > 0 && completedCount.length === tasks.length)}
                     />
                 </div>

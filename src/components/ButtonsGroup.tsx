@@ -1,20 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
+import { DisplayState } from '../interfaces';
 import { useTasks } from '../CustomHooks';
 
 
 export const ButtonsGroup: React.FC = () => {
-    const [
-        tasks, 
-        activeCount, 
-        completedCount,
-        add, 
-        remove, 
-        toggle, 
-        clearCompleted, 
-        allCompleted, 
-        edit,
-    ] = useTasks();
+    const {activeCount, completedCount, deleteCompletedTasks, changeDisplayState} = useTasks();
     const buttonStyle: string = 
         clsx({
             'btn-group': true, 
@@ -32,19 +23,19 @@ export const ButtonsGroup: React.FC = () => {
             <div className="btn-group" role="group">
                 <button 
                     className="btn-group btn-group-sm" 
-                    onClick={() => {}}
+                    onClick={() => changeDisplayState(DisplayState.All)}
                 >All</button>
                 <button 
                     className="btn-group btn-group-sm" 
-                    onClick={() => {}}
+                    onClick={() => changeDisplayState(DisplayState.Active)}
                 >Active</button>
                 <button 
                     className="btn-group btn-group-sm" 
-                    onClick={() => {}}
+                    onClick={() => changeDisplayState(DisplayState.Completed)}
                 >Completed</button>
                 <button 
                     className={buttonStyle} 
-                    onClick={clearCompleted}
+                    onClick={deleteCompletedTasks}
                 >Clear completed</button> 
             </div>
         </div>

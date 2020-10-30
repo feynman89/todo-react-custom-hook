@@ -4,20 +4,10 @@ import { useTasks } from '../CustomHooks'
 
 
 export const TasksList: React.FC = () => {
-    const [
-        tasks, 
-        activeCount, 
-        completedCount,
-        add, 
-        remove, 
-        toggle, 
-        clearCompleted, 
-        allCompleted, 
-        edit,
-      ] = useTasks();
+    const {displayTasks} = useTasks();
     return (
         <ul className="list-group">
-            {tasks.map(task => {
+            {displayTasks.map(task => {
                 return (<Task 
                     key={task.id}
                     task={task} 

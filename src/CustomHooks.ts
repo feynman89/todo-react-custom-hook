@@ -1,20 +1,20 @@
-import React, { useCallback, useEffect, useMemo, useState, useContext } from 'react';
-import {TasksContext} from './components/TasksContextProvide'
-import { ITask } from './interfaces';
+import React, { useCallback, useMemo, useState, useContext } from 'react';
+import { TasksContext } from './components/TasksContextProvide'
+import { ITask, DisplayState } from './interfaces';
 
 export const useTasks = () => {
-    const {tasks, setTasks} = useContext(TasksContext);
+    const {tasks, setTasks, displayState, setDisplayState} = useContext(TasksContext);
     const activeCount = useMemo<ITask[]>(() => tasks.filter(task => !task.completed), [tasks]);
     const completedCount = useMemo<ITask[]>(() => tasks.filter(task => task.completed), [tasks]);
-  
-    useEffect(() => {
-        const savedTasks = JSON.parse(localStorage.getItem('tasks') || '[]') as ITask[];
-        setTasks(savedTasks);
-    }, []);
-      
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
+    const displayTasks = useMemo<ITask[]>((): ITask[] => {
+        if(displayState === DisplayState.All) {
+            return tasks;
+        }
+        else if(displayState === DisplayState.Active) {
+            return activeCount;
+        }
+        return completedCount;
+    }, [tasks, activeCount, completedCount, displayState]);
   
     const addHandler = useCallback((title: string) => {
         const newTask: ITask = {
@@ -30,21 +30,11 @@ export const useTasks = () => {
     }, []);
       
     const removeHandler = useCallback((id: number) => {
-        setTasks(prev => prev.filter(task => {
-        if(task.id !== id){
-          return task;
-        }
-        return null;
-      }));
+        setTasks(prev => prev.filter(task => task.id !== id));
     }, []);
       
     const deleteCompletedTasks = useCallback(() => {
-        setTasks(prev => prev.filter(task => {
-        if(task.completed === false) {
-            return task;
-        }
-        return null;
-        }));
+        setTasks(prev => prev.filter(task => !task.completed));
     }, []);
       
     const editHandler = useCallback((id: number, title: string) => {
@@ -57,16 +47,21 @@ export const useTasks = () => {
             {...task, completed: !task.completed} 
             : {...task, completed: true}));
     }, [completedCount, tasks]);
-  
-    return [
+
+    const changeDisplayState = useCallback((displayStat: DisplayState) => { setDisplayState(displayStat) }, []);
+
+    return {
         tasks, 
         activeCount, 
         completedCount,
+        displayState,
+        displayTasks, 
         addHandler, 
         removeHandler, 
         toggleHandler, 
         deleteCompletedTasks, 
         allCompletedHandler, 
-        editHandler
-    ] as const;  
+        editHandler,
+        changeDisplayState
+    };
   }

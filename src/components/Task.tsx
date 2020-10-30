@@ -8,17 +8,7 @@ type TaskProps = {
 }
 
 export const Task: React.FC<TaskProps> = (props) => {
-    const [
-        tasks, 
-        activeCount, 
-        completedCount,
-        add, 
-        remove, 
-        toggle, 
-        clearCompleted, 
-        allCompleted, 
-        edit,
-    ] = useTasks();
+    const {toggleHandler, removeHandler, editHandler} = useTasks();
     const [title, setTitle] = useState<string>(props.task.title);
     const [editState, setEditState] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -43,7 +33,7 @@ export const Task: React.FC<TaskProps> = (props) => {
     
     const keyPressHandler = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter' && title.length > 0) {
-            edit(props.task.id, title);
+            editHandler(props.task.id, title);
             setTitle(title);
             setEditState(prev => !prev);
         }
@@ -66,7 +56,7 @@ export const Task: React.FC<TaskProps> = (props) => {
                     className="form-check-input"
                     type="checkbox" 
                     checked={props.task.completed} 
-                    onChange={() => toggle(props.task.id)}
+                    onChange={() => toggleHandler(props.task.id)}
                 />
                 <label 
                     onDoubleClick={doubleClickHandler} 
@@ -85,7 +75,7 @@ export const Task: React.FC<TaskProps> = (props) => {
                 />
                 <button 
                     className="close text-danger" 
-                    onClick={() => remove(props.task.id)}
+                    onClick={() => removeHandler(props.task.id)}
                 ><i aria-hidden="true">&times;</i></button>
             </div>
 
