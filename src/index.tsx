@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import TasksContextProvide from './components/TasksContextProvide';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TasksContextProvide/>
+    <TasksContextProvide>
+      <App />
+    </TasksContextProvide>
   </React.StrictMode>,
   document.getElementById('root')
 );

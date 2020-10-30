@@ -1,6 +1,7 @@
-import React, { useCallback, useMemo, useState, useContext } from 'react';
+import { useCallback, useMemo, useContext } from 'react';
 import { TasksContext } from './components/TasksContextProvide'
-import { ITask, DisplayState } from './interfaces';
+import { ITask } from './interfaces';
+import { DisplayState } from './enums';
 
 export const useTasks = () => {
     const {tasks, setTasks, displayState, setDisplayState} = useContext(TasksContext);
@@ -54,7 +55,6 @@ export const useTasks = () => {
         tasks, 
         activeCount, 
         completedCount,
-        displayState,
         displayTasks, 
         addHandler, 
         removeHandler, 

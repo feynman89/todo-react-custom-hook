@@ -4,7 +4,7 @@ import { useTasks } from '../CustomHooks'
 
 
 export const TasksList: React.FC = () => {
-    const {displayTasks} = useTasks();
+    const { displayTasks } = useTasks();
     return (
         <ul className="list-group">
             {displayTasks.map(task => {

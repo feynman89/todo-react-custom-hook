@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import App from '../App';
-import { DisplayState, ITask } from '../interfaces';
+import { ITask } from '../interfaces';
+import { DisplayState } from '../enums';
 
 interface ITasksContextValue {
   tasks: ITask[],
@@ -16,7 +16,7 @@ export const TasksContext = React.createContext<ITasksContextValue>({
   setDisplayState: () => {},
 });
   
-const TasksContextProvide: React.FC = () => {
+const TasksContextProvide: React.FC = ({ children }) => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [displayState, setDisplayState] = useState<DisplayState>(DisplayState.All);
 
@@ -45,8 +45,7 @@ const TasksContextProvide: React.FC = () => {
   
   return (
     <TasksContext.Provider value={value}>
-      <App />
-      {/* {children} */}
+      {children}
     </TasksContext.Provider>
   )
 }

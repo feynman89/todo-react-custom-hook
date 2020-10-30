@@ -41,12 +41,7 @@ export const Task: React.FC<TaskProps> = (props) => {
 
     const lostFocusHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(props.task.title);
-        setEditState(prev => {
-            if(!prev) {
-                return prev;
-            }
-            return !prev;
-        });
+        setEditState(false);
     }
 
     return (

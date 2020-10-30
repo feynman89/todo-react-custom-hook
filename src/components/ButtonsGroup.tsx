@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { DisplayState } from '../interfaces';
+import { DisplayState } from '../enums';
 import { useTasks } from '../CustomHooks';
 
 
