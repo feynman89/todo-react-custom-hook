@@ -4,11 +4,10 @@ import { Header } from './components/Header';
 import { InputForm } from './components/InputForm';
 import { TasksList } from './components/TasksList';
 
-
 const App: React.FC = () => {
 
   return (
-    <div className="container"> 
+    <div className="container">
       <Header />
       <InputForm />
       <TasksList />

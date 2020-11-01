@@ -17,6 +17,5 @@ code {
 }
 
 .hide-element {
-  /* visibility: hidden; */
   display: none;
 }

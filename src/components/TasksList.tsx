@@ -2,15 +2,14 @@ import React from 'react';
 import { Task } from './Task'
 import { useTasks } from '../CustomHooks'
 
-
 export const TasksList: React.FC = () => {
     const { displayTasks } = useTasks();
     return (
         <ul className="list-group">
             {displayTasks.map(task => {
-                return (<Task 
+                return (<Task
                     key={task.id}
-                    task={task} 
+                    task={task}
                 />);
             })}
         </ul>

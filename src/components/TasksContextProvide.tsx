@@ -11,11 +11,11 @@ interface ITasksContextValue {
 
 export const TasksContext = React.createContext<ITasksContextValue>({
   tasks: [],
-  setTasks: () => {},
+  setTasks: () => { },
   displayState: DisplayState.All,
-  setDisplayState: () => {},
+  setDisplayState: () => { },
 });
-  
+
 const TasksContextProvide: React.FC = ({ children }) => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [displayState, setDisplayState] = useState<DisplayState>(DisplayState.All);
@@ -35,14 +35,14 @@ const TasksContextProvide: React.FC = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('displayState', JSON.stringify(displayState));
   }, [displayState]);
- 
+
   const value = {
     tasks,
     setTasks,
     displayState,
     setDisplayState,
   }
-  
+
   return (
     <TasksContext.Provider value={value}>
       {children}
