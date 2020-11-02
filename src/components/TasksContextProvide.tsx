@@ -4,10 +4,10 @@ import { DisplayState } from '../enums';
 import PropTypes from 'prop-types';
 
 type TasksContextValue = {
-  tasks: ITask[],
-  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>,
-  displayState: DisplayState,
-  setDisplayState: React.Dispatch<React.SetStateAction<DisplayState>>,
+    tasks: ITask[],
+    setTasks: React.Dispatch<React.SetStateAction<ITask[]>>,
+    displayState: DisplayState,
+    setDisplayState: React.Dispatch<React.SetStateAction<DisplayState>>,
 }
 
 export const TasksContext = React.createContext<TasksContextValue>({
