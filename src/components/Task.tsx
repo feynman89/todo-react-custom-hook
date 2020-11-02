@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useRef, useState, useEffect } from 'react';
 import { ITask } from '../interfaces';
-import { useTasks } from '../CustomHooks'
+import { useTasks } from '../CustomHooks';
 
 type TaskProps = {
     task: ITask,
@@ -25,11 +25,11 @@ export const Task: React.FC<TaskProps> = ({ task }: TaskProps) => {
 
     const doubleClickHandler = () => {
         setEditState(prev => !prev);
-    }
+    };
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
-    }
+    };
 
     const keyPressHandler = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter' && title.length > 0) {
@@ -37,12 +37,12 @@ export const Task: React.FC<TaskProps> = ({ task }: TaskProps) => {
             setTitle(title);
             setEditState(prev => !prev);
         }
-    }
+    };
 
     const lostFocusHandler = () => {
         setTitle(task.title);
         setEditState(false);
-    }
+    };
 
     return (
         <li className={classes}>
@@ -76,4 +76,4 @@ export const Task: React.FC<TaskProps> = ({ task }: TaskProps) => {
 
         </li>
     );
-}
+};

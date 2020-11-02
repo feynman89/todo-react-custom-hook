@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useContext } from 'react';
-import { TasksContext } from './components/TasksContextProvide'
-import { ITask } from './interfaces';
+import { TasksContext } from './components/TasksContextProvide';
+import { ICustomHooksReturns, ITask } from './interfaces';
 import { DisplayState } from './enums';
 
-export const useTasks = () => {
+export const useTasks = (): ICustomHooksReturns => {
     const { tasks, setTasks, displayState, setDisplayState } = useContext(TasksContext);
     const activeCount = useMemo<ITask[]>(() => tasks.filter(task => !task.completed), [tasks]);
     const completedCount = useMemo<ITask[]>(() => tasks.filter(task => task.completed), [tasks]);
@@ -49,7 +49,7 @@ export const useTasks = () => {
                 : { ...task, completed: true }));
     }, [completedCount, tasks]);
 
-    const changeDisplayState = useCallback((displayStat: DisplayState) => { setDisplayState(displayStat) }, []);
+    const changeDisplayState = useCallback((displayStat: DisplayState) => { setDisplayState(displayStat); }, []);
 
     return {
         tasks,
@@ -57,11 +57,11 @@ export const useTasks = () => {
         completedCount,
         displayTasks,
         add,
-        remove,
         toggle,
+        remove,
         clearCompletedTasks,
-        allCompleted,
         edit,
+        allCompleted,
         changeDisplayState
     };
-}
+};

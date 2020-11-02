@@ -5,13 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import TasksContextProvide from './components/TasksContextProvide';
 import App from './App';
 
+
 ReactDOM.render(
-  <React.StrictMode>
-    <TasksContextProvide>
-      <App />
-    </TasksContextProvide>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <TasksContextProvide>
+            <App />
+        </TasksContextProvide>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

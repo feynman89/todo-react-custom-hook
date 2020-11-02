@@ -38,5 +38,5 @@ export const ButtonsGroup: React.FC = () => {
                 >Clear completed</button>
             </div>
         </div>
-    )
-}
+    );
+};

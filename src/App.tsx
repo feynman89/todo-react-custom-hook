@@ -6,14 +6,14 @@ import { TasksList } from './components/TasksList';
 
 const App: React.FC = () => {
 
-  return (
-    <div className="container">
-      <Header />
-      <InputForm />
-      <TasksList />
-      <ButtonsGroup />
-    </div>
-  );
-}
+    return (
+        <div className="container">
+            <Header />
+            <InputForm />
+            <TasksList />
+            <ButtonsGroup />
+        </div>
+    );
+};
 
 export default App;

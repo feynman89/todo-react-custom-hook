@@ -1,6 +1,6 @@
 import React from 'react';
-import { Task } from './Task'
-import { useTasks } from '../CustomHooks'
+import { Task } from './Task';
+import { useTasks } from '../CustomHooks';
 
 export const TasksList: React.FC = () => {
     const { displayTasks } = useTasks();
@@ -14,4 +14,4 @@ export const TasksList: React.FC = () => {
             })}
         </ul>
     );
-}
+};
