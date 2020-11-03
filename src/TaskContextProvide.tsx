@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ITask } from '../interfaces';
-import { DisplayState } from '../enums';
+import { ITask } from './interfaces';
+import { DisplayState } from './enums';
 import PropTypes from 'prop-types';
 
 type TasksContextValue = {
@@ -29,7 +29,8 @@ const TasksContextProvide: React.FC = ({ children }) => {
         const savedTasks = JSON.parse(localStorage.getItem('tasks') || '[]') as ITask[];
         setTasks(savedTasks);
 
-        const savedDisplayState = JSON.parse(localStorage.getItem('displayState') || '0') as DisplayState;
+        const savedDisplayState = 
+        JSON.parse(localStorage.getItem('displayState') || '0') as DisplayState;
         setDisplayState(savedDisplayState);
     }, []);
 

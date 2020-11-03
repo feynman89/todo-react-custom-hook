@@ -12,10 +12,10 @@ export interface ICustomHooksReturns {
     completedCount: ITask [],
     displayTasks: ITask [],
     add: (title: string) => void,
-    toggle: (id: number) =>void,
+    toggle: (id: number) => void,
     remove: (id: number) => void,
-    clearCompletedTasks: () =>void,
-    edit: (id: number, title: string) =>void,
-    allCompleted: () =>void,
-    changeDisplayState: (displayStat: DisplayState) =>void
+    clearCompletedTasks: () => void,
+    edit: (id: number, title: string) => void,
+    allCompleted: () => void,
+    changeDisplayState: (displayStat: DisplayState) => void
 }

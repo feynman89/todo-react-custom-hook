@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useContext } from 'react';
-import { TasksContext } from './components/TasksContextProvide';
+import { TasksContext } from './TaskContextProvide';
 import { ICustomHooksReturns, ITask } from './interfaces';
 import { DisplayState } from './enums';
 

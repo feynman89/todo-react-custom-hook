@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useRef, useState, useEffect } from 'react';
-import { ITask } from '../interfaces';
-import { useTasks } from '../CustomHooks';
+import { ITask } from '../../../interfaces';
+import { useTasks } from '../../../CustomHook';
 
 type TaskProps = {
     task: ITask,
@@ -46,9 +46,9 @@ export const Task: React.FC<TaskProps> = ({ task }: TaskProps) => {
 
     return (
         <li className={classes}>
-            <div className="form-check">
+            <div className="form-check  my-1">
                 <input
-                    className="form-check-input"
+                    className="checkbox-size second-checkbox"
                     type="checkbox"
                     checked={task.completed}
                     onChange={() => toggle(task.id)}

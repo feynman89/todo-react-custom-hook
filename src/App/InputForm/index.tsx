@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTasks } from '../CustomHooks';
+import { useTasks } from '../../CustomHook';
 
 export const InputForm: React.FC = () => {
     const { tasks, completedCount, add, allCompleted } = useTasks();
@@ -17,10 +17,11 @@ export const InputForm: React.FC = () => {
     };
 
     return (
-        <div className="input-group mb-3">
+        <div className="input-group my-2 form-padding-space">
             <div className="input-group-prepend">
                 <div className="input-group-text">
                     <input
+                        className="checkbox-size"
                         type="checkbox"
                         onChange={allCompleted}
                         checked={(tasks.length > 0 && completedCount.length === tasks.length)}
@@ -28,7 +29,7 @@ export const InputForm: React.FC = () => {
                 </div>
             </div>
             <input
-                className="form-control"
+                className="form-control new-todo"
                 onChange={changeHandler}
                 value={title}
                 type="text"

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import { DisplayState } from '../enums';
-import { useTasks } from '../CustomHooks';
+import { DisplayState } from '../../enums';
+import { useTasks } from '../../CustomHook';
 
 export const ButtonsGroup: React.FC = () => {
     const { activeCount, completedCount, clearCompletedTasks, changeDisplayState } = useTasks();
